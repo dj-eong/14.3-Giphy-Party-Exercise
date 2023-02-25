@@ -18,7 +18,7 @@ async function searchImage(input) {
     const config = { params: { q: `${input}`, api_key: apiKey } };
     const res = await axios.get('https://api.giphy.com/v1/gifs/search', config);
     if (res.data.data.length == 0) return "https://media3.giphy.com/media/3o6Zt7npmUtWmmQ2kw/giphy.gif?cid=482277c2ozoxyk9o31vnnv7c1fbhih8wd9en48pngt6zhmza&rid=giphy.gif&ct=g";
-    const url = res.data.data[0].images.original.url;
+    const url = res.data.data[Math.floor(Math.random() * res.data.data.length)].images.original.url;
     return url;
 
 }
